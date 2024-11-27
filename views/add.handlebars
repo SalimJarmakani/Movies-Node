@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Movie</title>
+    <style>
+      body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin:
+      0; padding: 0; } header { background-color: #333; color: white; padding:
+      10px 0; text-align: center; } h1 { font-size: 2.5em; margin: 0; }
+      .container { width: 80%; margin: 20px auto; background-color: white;
+      border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding:
+      20px; } form { display: flex; flex-direction: column; gap: 15px; } label {
+      font-size: 1.1em; } input { padding: 10px; font-size: 1em; border: 1px
+      solid #ccc; border-radius: 4px; margin-top: 5px; } textarea { padding:
+      10px; font-size: 1em; border: 1px solid #ccc; border-radius: 4px;
+      margin-top: 5px; resize: vertical; min-height: 150px; } button { padding:
+      10px 15px; background-color: #007bff; color: white; border: none;
+      border-radius: 4px; cursor: pointer; font-size: 1.1em; } button:hover {
+      background-color: #0056b3; } .back-link { display: inline-block; padding:
+      10px 20px; background-color: #28a745; color: white; text-decoration: none;
+      border-radius: 4px; font-size: 1.1em; margin-top: 20px; } .back-link:hover
+      { background-color: #218838; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Add New Movie</h1>
+    </header>
+
+    <div class="container">
+      <!-- Display Success Message if available -->
+      {{#if successMessage}}
+        <div class="success-message">
+          <p>{{successMessage}}</p>
+        </div>
+      {{/if}}
+
+      <form action="/movies/add" method="POST">
+        <label for="Title">Title:</label>
+        <input type="text" name="Title" id="Title" required />
+
+        <label for="Released">Released:</label>
+        <input type="date" name="Released" id="Released" required />
+
+        <label for="Genre">Genre:</label>
+        <input type="text" name="Genre" id="Genre" required />
+
+        <label for="Director">Director:</label>
+        <input type="text" name="Director" id="Director" required />
+
+        <label for="Actors">Actors:</label>
+        <input type="text" name="Actors" id="Actors" required />
+
+        <label for="Plot">Plot:</label>
+        <textarea name="Plot" id="Plot" required></textarea>
+
+        <label for="imdbRating">IMDb Rating:</label>
+        <input
+          type="number"
+          name="imdbRating"
+          id="imdbRating"
+          min="0"
+          max="10"
+          required
+        />
+
+        <label for="BoxOffice">Box Office:</label>
+        <input type="text" name="BoxOffice" id="BoxOffice" />
+
+        <label for="Poster">Poster URL:</label>
+        <input type="text" name="Poster" id="Poster" />
+
+        <button type="submit">Add Movie</button>
+      </form>
+
+      <a href="/movies" class="back-link">Back to Movies List</a>
+    </div>
+  </body>
+</html>

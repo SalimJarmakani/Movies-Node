@@ -1,0 +1,23 @@
+<h2>Movies List</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Movie ID</th>
+      <th>Title</th>
+      <th>Released</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each movies}}
+      <tr>
+        <td>{{this.Movie_ID}}</td>
+        <td>{{this.Title}}</td>
+        <td>{{this.Released}}</td>
+        <td>
+          <a href="/movies/{{this._id}}" class="btn btn-info">View Movie</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
