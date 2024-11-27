@@ -26,8 +26,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" })); // parse applica
 // Use the MONGODB_URI from .env file, fallback to a local DB if not found
 const mongoURI = process.env.MONGODB_URI || database.url;
 
-console.log(mongoURI);
-
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
@@ -49,6 +47,7 @@ app.engine(
 // Serve static files from the "public" folder with absolute path
 app.use(express.static(path.join(__dirname, "public")));
 
+app.set("views", __dirname + "/views");
 var Movie = require("./models/movie");
 // Get all movies from the database
 // app.get("/api/movies", function (req, res) {
@@ -66,6 +65,7 @@ app.get("/movies", (req, res) => {
       res.render("movies", { movies: movies });
     });
 });
+
 // Get a movie by its ID
 // app.get("/api/movies/:movie_id_or_title", function (req, res) {
 //   let query = req.params.movie_id_or_title;
