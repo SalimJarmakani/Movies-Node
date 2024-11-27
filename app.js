@@ -57,6 +57,14 @@ var Movie = require("./models/movie");
 //   });
 // });
 
+app.get("/", (req, res) => {
+  Movie.find({})
+    .lean()
+    .exec(function (err, movies) {
+      if (err) res.send(err);
+      res.render("movies", { movies: movies });
+    });
+});
 app.get("/movies", (req, res) => {
   Movie.find({})
     .lean()
