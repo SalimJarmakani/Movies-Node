@@ -305,6 +305,7 @@ app.post("/api/movies", function (req, res) {
       // Return success message with the MongoDB ID of the new movie
       res.render("details", {
         message: "Movie successfully added.",
+        movie: movie,
       });
     }
   );
